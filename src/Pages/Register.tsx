@@ -22,7 +22,7 @@ export default function Register() {
             email,
             password,
             name: userName,
-            secondename: secondName,
+            secondname: secondName,
             age: userAge,
             dogname: dogName,
             dogage:dogAge
