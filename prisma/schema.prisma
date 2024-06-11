@@ -10,20 +10,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tutor{
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  email    String @unique
-  password String
-  name String
-  secondname String
-  age Int
-  dogname String
-  dogage Int
-  cep String?
-  street String?
-  housenumber Int?
+model Tutor {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  email        String    @unique
+  password     String
+  name         String
+  secondname   String
+  age          Int
+  dogname      String
+  dogage       Int
+  cep          String?
+  street       String?
+  housenumber  Int?
   neighborhood String?
+  orders       Orders[]
 }
 
+model Category {
+  id    String   @id @default(auto()) @map("_id") @db.ObjectId
+  name  String   @unique
+  price Float
+  orders Orders[]
+}
 
-
+model Orders {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  tutor      Tutor     @relation(fields: [tutorId], references: [id])
+  tutorId    String    @db.ObjectId
+  category   Category  @relation(fields: [categoryId], references: [id])
+  categoryId String    @db.ObjectId
+}

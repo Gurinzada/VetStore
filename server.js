@@ -8,8 +8,32 @@ const prisma = new PrismaClient()
 app.use(express.json())
 app.use(cors())
 
+
+app.get("/users", async (req, res) => {
+    try {
+       const response = await prisma.tutor.findMany()
+       res.status(200).json(response)
+    } catch (error) {
+        res.status(500).json({error: "An error has ocurred"})
+    }
+})
+
+app.get("/users/:id", async(req, res) => {
+    try {
+        const response = await prisma.tutor.findUnique({
+            where:{
+                id: req.params.id
+            }
+        })
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(500).json({error: "An error has ocurred"})
+    }
+})
+
 app.post("/users", async (req, res) => {
-   const response = await prisma.tutor.create({
+   try {
+    const response = await prisma.tutor.create({
         data:{
             email:req.body.email,
             password: req.body.password,
@@ -21,7 +45,22 @@ app.post("/users", async (req, res) => {
         }
     })
 
-    console.log(res.status(201).json(response))
+    if(response){
+        console.log(res.status(201).json(response))
+    }
+   } catch (error) {
+        res.status(500).json({error: "An error has ocurred"})
+   }
+})
+
+app.get("/categories", async (req, res) => {
+    const response = await prisma.category.findMany()
+    res.status(200).json(response)
+})
+
+app.get("/orders", async(req, res) => {
+    const response = await prisma.orders.findMany()
+    res.status(200).json(response)
 })
 
 
