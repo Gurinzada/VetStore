@@ -9,7 +9,8 @@ interface Tutor{
     CEP:string | undefined,
     Street:string | undefined,
     Neighborhood:string | undefined,
-    HouseNumber:number | undefined
+    HouseNumber:number | undefined,
+    cash?:number
 }
 
 
@@ -26,6 +27,7 @@ export interface UserInfo {
     street?: string;
     housenumber?: number;
     neighborhood?: string;
+    cash?:number;
   }
 
 export interface Categories {

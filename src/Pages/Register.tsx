@@ -45,7 +45,8 @@ export default function Register() {
             CEP: undefined,
             HouseNumber: undefined,
             Neighborhood: undefined,
-            Street: undefined
+            Street: undefined,
+            cash:undefined
           }
           login(newUserLog)
           navigate(`/store/${response.data.id}`)

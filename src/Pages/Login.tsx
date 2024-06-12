@@ -27,7 +27,8 @@ export default function Login(){
                 password: response.password,
                 Street: response.street,
                 userName: response.name,
-                userSecondName: response.secondname
+                userSecondName: response.secondname,
+                cash: response.cash
             }
             login(theUser)
             navigate(`/store/${response.id}`)

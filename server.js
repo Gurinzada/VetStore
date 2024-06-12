@@ -55,6 +55,22 @@ app.post("/users", async (req, res) => {
    }
 })
 
+app.patch("/users/:id", async (req, res) => {
+    try {
+        const response = await prisma.tutor.update({
+            where: {
+                id: req.params.id,
+            },
+            data:{
+                cash: req.body.cash
+            }
+        })
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(500).json({error: "An Error has ocurrerd"})
+    }
+})
+
 app.get("/categories", async (req, res) => {
     const response = await prisma.category.findMany()
     res.status(200).json(response)

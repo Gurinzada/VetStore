@@ -23,6 +23,7 @@ model Tutor {
   street       String?
   housenumber  Int?
   neighborhood String?
+  cash         Float?
   orders       Orders[]
 }
 
