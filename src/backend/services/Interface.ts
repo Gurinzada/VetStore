@@ -13,6 +13,22 @@ interface Tutor{
 }
 
 
+export interface UserInfo {
+    id: string;
+    email: string;
+    password: string;
+    name: string;
+    secondname: string;
+    age: number;
+    dogname: string;
+    dogage: number;
+    cep?: string;
+    street?: string;
+    housenumber?: number;
+    neighborhood?: string;
+  }
+
+
    
 
 export default Tutor

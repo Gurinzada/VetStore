@@ -1,15 +1,21 @@
 import { useState } from "react";
 import api from "../backend/services/api";
+import { useNavigate } from "react-router-dom";
+import Tutor from "../backend/services/Interface";
+import { useAuth } from "../Context/AuthProvider";
+import HeaderDefault from "../Components/HeaderDefault";
 
 export default function Register() {
   const [userName, setUserName] = useState<string>(``);
-  const [secondName, setUserSecondName] = useState<string>();
+  const [secondName, setUserSecondName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [passwordConfirm, setPasswordConfirm] = useState<string>("");
   const [dogName, setDogName] = useState<string>("");
   const [dogAge, setDogAge] = useState<number>(1);
   const [userAge, setUserAge] = useState<number>(1);
   const [password, setPassword] = useState<string>(``);
+  const navigate = useNavigate()
+  const {login} = useAuth()
 
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault()
@@ -27,7 +33,23 @@ export default function Register() {
             dogname: dogName,
             dogage:dogAge
         })
-        console.log(response.data)
+          console.log(response.data)
+          const newUserLog:Tutor = {
+            email,
+            password,
+            userName: userName,
+            userSecondName: secondName,
+            Age: userAge,
+            DogName: dogName,
+            DogAge:dogAge,
+            CEP: undefined,
+            HouseNumber: undefined,
+            Neighborhood: undefined,
+            Street: undefined
+          }
+          login(newUserLog)
+          navigate(`/store/${response.data.id}`)
+        
     } catch (error) {
         console.error(`Something goes wrong `, error)
     }
@@ -35,6 +57,7 @@ export default function Register() {
 
   return (
     <div>
+      <HeaderDefault/>
       <form onSubmit={handleSubmit}>
         <div>
           <h1>Faça seu Cadastro!</h1>
