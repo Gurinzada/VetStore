@@ -28,6 +28,11 @@ export interface UserInfo {
     neighborhood?: string;
   }
 
+export interface Categories {
+  id:string,
+  name: string,
+  price:number
+}
 
    
 

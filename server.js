@@ -2,8 +2,10 @@ import express from "express"
 import { PrismaClient } from "@prisma/client"
 import cors from "cors"
 
+
 const app = express()
 const prisma = new PrismaClient()
+
 
 app.use(express.json())
 app.use(cors())
@@ -61,6 +63,20 @@ app.get("/categories", async (req, res) => {
 app.get("/orders", async(req, res) => {
     const response = await prisma.orders.findMany()
     res.status(200).json(response)
+})
+
+app.post("/orders", async(req, res) => {
+    try {
+        const response = await prisma.orders.create({
+            data:{
+                tutorId: req.body.tutorId,
+                categoryId: req.body.categoryId
+            }
+        })
+        res.status(201).json(response)
+    } catch (error) {
+        res.status(500).json({error: "An Error has ocurred during the post of your order"})
+    }
 })
 
 
