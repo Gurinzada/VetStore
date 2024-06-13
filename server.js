@@ -43,7 +43,12 @@ app.post("/users", async (req, res) => {
             secondname: req.body.secondname,
             age: req.body.age,
             dogname:req.body.dogname,
-            dogage:req.body.dogage
+            dogage:req.body.dogage,
+            cep: null,
+            cash: null,
+            housenumber: null,
+            street: null,
+            neighborhood:null
         }
     })
 
@@ -71,6 +76,36 @@ app.patch("/users/:id", async (req, res) => {
     }
 })
 
+app.put("/users/:id", async (req, res) => {
+    try {
+        console.log("Request Body:", req.body)
+        const response = await prisma.tutor.update({
+            where:{
+                id: req.params.id,
+            },
+            data:{
+                email:req.body.email,
+                password: req.body.password,
+                name: req.body.name,
+                secondname: req.body.secondname,
+                age: req.body.age,
+                dogname:req.body.dogname,
+                dogage:req.body.dogage,
+                cep: req.body.cep,
+                street: req.body.street,
+                housenumber: req.body.housenumber,
+                neighborhood: req.body.neighborhood,
+                cash: req.body.cash,
+                orders: req.body?.orders
+            }
+        })
+        res.status(200).json(response)
+    } catch (error) {
+        console.error("Prisma error:", error); 
+        console.log(res.status(500).json({error: "An error has ocurred!"}))
+    }
+})
+
 app.get("/categories", async (req, res) => {
     const response = await prisma.category.findMany()
     res.status(200).json(response)
@@ -86,12 +121,26 @@ app.post("/orders", async(req, res) => {
         const response = await prisma.orders.create({
             data:{
                 tutorId: req.body.tutorId,
-                categoryId: req.body.categoryId
+                categoryId: req.body.categoryId,
+                actualdate: req.body.actualdate
             }
         })
         res.status(201).json(response)
     } catch (error) {
         res.status(500).json({error: "An Error has ocurred during the post of your order"})
+    }
+})
+
+app.get("/orders/:id", async(req, res) => {
+    try {
+        const response = await prisma.orders.findMany({
+            where:{
+                tutorId: req.params.id
+            }
+        })
+        res.status(200).status(response)
+    } catch (error) {
+        res.status(500).json({error: "An error has ocurred during to get the oders"})
     }
 })
 

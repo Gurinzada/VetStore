@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import api from "../backend/services/api";
 import { UserInfo, Categories } from "../backend/services/Interface";
 import Bone from "../imgs/Logo.jpg";
@@ -11,7 +11,8 @@ import allServices from "../imgs/AllServices.jpg";
 import playing from "../imgs/PlayWithDog.jpg";
 import allNight from "../imgs/DogEating.jpg";
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../Context/AuthProvider";
 
 export default function Store() {
   const [userInfos, setUserInfos] = useState<UserInfo | null>(null);
@@ -21,6 +22,7 @@ export default function Store() {
   );
   const [actualValue, setActualValue] = useState<number>(0);
   const { id } = useParams();
+  const { logout } = useAuth()
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -58,7 +60,7 @@ export default function Store() {
     }
   };
 
-  const handleCheckBox = (id: string, price: number, isChecked: boolean) => {
+  const handleCheckBox = (id: string, isChecked: boolean) => {
     setSelectedServices((prevSelectedServices) => {
       const updatedSelectedServices = new Set(prevSelectedServices);
       if (isChecked) {
@@ -71,25 +73,21 @@ export default function Store() {
     });
   };
 
-  const calculateTotalPrice = async() => {
-    if (!categories) return;
-    const total = Array.from(selectedServices).reduce((total, serviceId) => {
+  const calculateTotalPrice = () => {
+    if (!categories) return 0;
+    return Array.from(selectedServices).reduce((total, serviceId) => {
       const service = categories.find((cat) => cat.id === serviceId);
       return total + (service ? service.price : 0);
     }, 0);
-    setActualValue((prevValue) => prevValue + total);
-    try {
-        await api.patch(`/users/${id}`, {
-          cash: actualValue
-        });
-      } catch (error) {
-        console.error("Erro ao atualizar o saldo do usuário:", error);
-      }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    const total = calculateTotalPrice();
+    const newActualValue = actualValue + total;
+    setActualValue(newActualValue);
+
     toast.success("Compra Efetuada com sucesso!", {
       position: "top-center",
       autoClose: 5000,
@@ -101,17 +99,34 @@ export default function Store() {
       theme: "dark",
       transition: Bounce,
     });
-    await calculateTotalPrice();
-    Array.from(selectedServices).forEach(async (service) => {
-      const find = categories?.find((cat) => cat.id === service);
-      if (find) {
-        await api.post("/orders", {
-          tutorId: id,
-          categoryId: find.id,
-        });
-      }
-    });
+
+    try {
+      await api.patch(`/users/${id}`, {
+        cash: newActualValue
+      });
+
+      Array.from(selectedServices).forEach(async (service) => {
+        const find = categories?.find((cat) => cat.id === service);
+        if (find) {
+          const getDay = new Date().getDate()
+          const getMonth = new Date().getMonth() + 1
+          const getYear = new Date().getFullYear()
+          const theDate = `${getDay < 10 ? `0${getDay}` : getDay}/${getMonth < 10 ? `0${getMonth}` : getMonth}/${getYear}`
+          await api.post("/orders", {
+            tutorId: id,
+            categoryId: find.id,
+            actualdate: theDate
+          });
+        }
+      });
+    } catch (error) {
+      console.error("Erro ao atualizar o saldo do usuário:", error);
+    }
   };
+
+  const handleLogout = () => {
+    logout()
+  }
 
   return (
     <div>
@@ -136,7 +151,7 @@ export default function Store() {
             {userInfos?.cep === null ? (
               <div>
                 <img src={Location} alt="" />{" "}
-                <span>Adicione sua localização</span>
+                <Link to={`/store/account/${id}`}><span>Adicione sua localização</span></Link>
               </div>
             ) : (
               <div>
@@ -150,36 +165,38 @@ export default function Store() {
           </div>
         </div>
         <div>
-          <span>Gastos: R$ {actualValue}.00</span>
+          <span>Gastos: R$ {actualValue === 0 ? "00": actualValue}.00</span>
         </div>
+        <nav>
+          <span style={{cursor:"pointer"}}>Account</span>
+          <span style={{cursor:"pointer"}} onClick={handleLogout}>Logout</span>
+        </nav>
       </header>
       <main>
-        <ToastContainer/>
+        <ToastContainer />
         <div>
           <h1>Escolha seu serviço abaixo</h1>
         </div>
         <form onSubmit={handleSubmit}>
           {categories ? (
             categories.map((cat) => (
-              <>
-                <div key={cat.id} id={cat.id}>
-                  <div>
-                    <h3>{cat.name}</h3>
-                  </div>
-                  <div>
-                    <img src={handleImages(cat.name)} alt="" />
-                  </div>
-                  <div>
-                    <span>R${cat.price}.00</span>
-                  </div>
-                  <input
-                    type="checkbox"
-                    onChange={(e) =>
-                      handleCheckBox(cat.id, cat.price, e.target.checked)
-                    }
-                  />
+              <div key={cat.id} id={cat.id}>
+                <div>
+                  <h3>{cat.name}</h3>
                 </div>
-              </>
+                <div>
+                  <img src={handleImages(cat.name)} alt="" />
+                </div>
+                <div>
+                  <span>R${cat.price === null ? "00" :cat.price}.00</span>
+                </div>
+                <input
+                  type="checkbox"
+                  onChange={(e) =>
+                    handleCheckBox(cat.id, e.target.checked)
+                  }
+                />
+              </div>
             ))
           ) : (
             <h1>Erro ao carregar os serviços!</h1>

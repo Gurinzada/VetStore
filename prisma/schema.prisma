@@ -40,4 +40,5 @@ model Orders {
   tutorId    String    @db.ObjectId
   category   Category  @relation(fields: [categoryId], references: [id])
   categoryId String    @db.ObjectId
+  actualdate String
 }

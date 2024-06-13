@@ -31,7 +31,7 @@ export default function Register() {
             secondname: secondName,
             age: userAge,
             dogname: dogName,
-            dogage:dogAge
+            dogage:dogAge,
         })
           console.log(response.data)
           const newUserLog:Tutor = {

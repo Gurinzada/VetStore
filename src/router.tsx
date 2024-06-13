@@ -4,6 +4,7 @@ import Register from "./Pages/Register";
 import Store from "./Pages/Store";
 import PrivateRoute from "./Components/PrivateRoute";
 import Login from "./Pages/Login";
+import Account from "./Pages/Account";
 
 const Router = createBrowserRouter([
     {
@@ -18,6 +19,9 @@ const Router = createBrowserRouter([
     },{
         path:"/login",
         element: <Login/>
+    },{
+        path:"/store/account/:id",
+        element: <Account/>
     }
 ])
 
