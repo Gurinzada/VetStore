@@ -1,0 +1,47 @@
+@import "./Colors.scss";
+@import "./Container.scss";
+
+.Wrapper{
+    @include Wrapper;
+}
+
+.FormRegister{
+    align-items: center;
+    @include AllBordersForms;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.55rem;
+    height: 100vh;
+    justify-content: center;
+    margin: 1rem 0 1rem 0;
+}
+
+.TitleRegister{
+    color: $Title;
+    font-weight: 200;
+    font-size: 2.2rem;
+}
+
+.WrapperDogs{
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width:768px) {
+    .FormRegister{
+        margin: 0.5rem 0 0.5rem 0;
+    }
+    .TitleRegister{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .TitleRegister{
+        font-size: 0.85rem;
+    }
+}

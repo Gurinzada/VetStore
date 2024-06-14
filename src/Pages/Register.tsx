@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Tutor from "../backend/services/Interface";
 import { useAuth } from "../Context/AuthProvider";
 import HeaderDefault from "../Components/HeaderDefault";
+import styles from "../styles/Register.module.scss"
 
 export default function Register() {
   const [userName, setUserName] = useState<string>(``);
@@ -57,11 +58,11 @@ export default function Register() {
   }
 
   return (
-    <div>
+    <div className={styles.Wrapper}>
       <HeaderDefault/>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.FormRegister}>
         <div>
-          <h1>Faça seu Cadastro!</h1>
+          <h1 className={styles.TitleRegister}>Faça seu Cadastro!</h1>
         </div>
         <div>
           <input
@@ -107,11 +108,11 @@ export default function Register() {
           <input
             type="number"
             placeholder="Insira sua idade"
-            value={userAge}
+            
             onChange={(e) => setUserAge(Number(e.target.value))}
           />
         </div>
-        <div>
+        <div className={styles.WrapperDogs}>
           <div>
             <input
               type="text"
@@ -124,7 +125,6 @@ export default function Register() {
             <input
               type="number"
               placeholder="Insira a idade de seu Pet"
-              value={dogAge}
               onChange={(e) => setDogAge(Number(e.target.value))}
             />
           </div>
