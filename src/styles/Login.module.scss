@@ -1,0 +1,117 @@
+@import "./Colors.scss";
+
+.Wrapper{
+    align-items: center;
+    background-color: $BackgroundColor;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0rem 3rem 0rem 3rem;
+}
+
+.FormLogin{
+    align-items: center;
+    border-radius: 60px;
+    border: 2px solid $BackgroundColorGhostHeader;
+    background-color: $CardBackground;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5rem;
+    height: 100vh;
+    justify-content: center;
+    margin: 2rem;
+    width: 575px;
+}
+
+.Title{
+    color: $Title;
+    font-size: 2.4rem;
+}
+
+.ContentLogin{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    justify-content: center;
+}
+
+label{
+    color: $Pitch;
+    font-weight: 300;
+}
+
+input{
+    border-radius: 22px;
+    border: 2px solid $borderColor;
+    height: 2.5rem;
+    padding-left: 0.35rem;
+    width: 24.25rem;
+}
+
+.BntLogin{
+    background-color: $BackgroundColorGhostHeader;
+    border-radius: 22px;
+    border: 2px solid $BackgroundColorGhostHeader;
+    cursor: pointer;
+    height: 1.25rem;
+    width: 12.125rem;
+}
+
+@media (max-width:768px) {
+    .FormLogin{
+        margin: 0.15rem;
+        width: 280px;
+    }
+
+    input{
+        font-size: 0.55rem;
+        height: 1.5rem;
+        width: 9rem;
+    }
+
+    .BntLogin{
+        font-size: 0.6rem;
+        width: 6rem;
+    }
+
+    .Title{
+        font-size: 1.2rem;
+    }
+
+    label{
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width:425px) {
+    .Wrapper{
+        margin: 0rem 1.5rem 0rem 1.5rem;
+    }
+    .FormLogin{
+        margin: 0;
+        width: 230px;
+    }
+
+    .Title{
+        font-size: .85rem;
+    }
+
+    input{
+        font-size: 0.45rem;
+        height: 1.2rem;
+        width: 8rem;
+    }
+
+    label{
+        font-size: 0.5rem;
+    }
+
+    .BntLogin{
+        font-size: 0.5rem;
+        height: 0.9rem;
+        width: 4rem;
+    }
+}

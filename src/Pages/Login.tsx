@@ -4,6 +4,7 @@ import Tutor, { UserInfo } from "../backend/services/Interface"
 import { useNavigate } from "react-router-dom"
 import useCheckUsers from "../backend/services/useCheckUsers"
 import { useAuth } from "../Context/AuthProvider"
+import styles from "../styles/Login.module.scss"
 
 export default function Login(){
     const [email, setEmail] = useState<string>("")
@@ -38,20 +39,20 @@ export default function Login(){
     }
 
     return(
-        <div>
+        <div className={styles.Wrapper}>
             <HeaderDefault/>
-            <form action="" onSubmit={handleSubmit}>
-                <h1>Faça Login agora mesmo!</h1>
-                <div>
+            <form action="" onSubmit={handleSubmit} className={styles.FormLogin}>
+                <h1 className={styles.Title}>Faça Login agora mesmo!</h1>
+                <div className={styles.ContentLogin}>
                     <label htmlFor="userEmail">E-mail</label>
                     <input type="email" id="userEmail" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
-                <div>
+                <div className={styles.ContentLogin}>
                     <label htmlFor="userPassword">Senha</label>
                     <input type="password" id="userPassword" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <div>
-                    <button>Login</button>
+                    <button className={styles.BntLogin}>Login🐶</button>
                 </div>
             </form>
         </div>

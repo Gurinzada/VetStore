@@ -1,5 +1,7 @@
+@import "./Colors.scss";
+
 .Wrapper{
-    background-color: #E7D08E;
+    background-color: $BackgroundColor;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -9,7 +11,7 @@
 
 .HeaderHome{
     align-items: center;
-    background-color: #F8F8FF;
+    background-color: $BackgroundColorGhostHeader;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap-reverse;
@@ -23,7 +25,7 @@
 
 .ImgSection{
     border-radius: 8px;
-    border: 2px solid #171717;
+    border: 2px solid $borderColor;
     width: 415px;
 }
 
@@ -42,7 +44,7 @@
   }
 
   a{
-    color: #111111;
+    color: $Pitch;
     font-size: 1.12rem;
     text-decoration: none;
   }
@@ -53,7 +55,7 @@
 
 .SectionHome{
     align-items: center;
-    background: linear-gradient(180deg, rgba(85,173,155,1) 30%, rgba(241,248,232,1) 75%);
+    background: linear-gradient(180deg, $CardBackground 30%, rgba(241,248,232,1) 75%);
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -62,7 +64,7 @@
 }
 
 .WrapperParagraphHome{
-    color:  #333333;
+    color:  $pColor;
     letter-spacing: .5px;
     width: 570px;
 }
@@ -74,14 +76,14 @@
 }
 
 .TitleHome{
-    color: #F1F8E8;
+    color: $Title;
     font-weight: 200;
     font-size: 2.2rem;
 }
 
 .FooterHome{
     align-items: center;
-    background-color: #F8F8FF;
+    background-color: $BackgroundColorGhostHeader;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

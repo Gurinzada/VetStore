@@ -1,0 +1,36 @@
+@import "./Colors.scss";
+
+.HeaderDefault{
+    align-items: center;
+    background-color: $BackgroundColorGhostHeader;
+    border-bottom: 2px solid $borderColor;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap-reverse;
+    gap: 2rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.NavBar{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.Bone{
+    width: 175px;
+}
+
+@media (max-width:768px) {
+    .Bone{
+        width: 68px;
+    }
+}
+
+@media (max-width:425px) {
+    .Bone{
+        width: 44px;
+    }
+}
