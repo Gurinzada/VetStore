@@ -36,6 +36,13 @@ export interface Categories {
   price:number
 }
 
+export interface Oders {
+  id: string,
+  tutorId: string,
+  categoryId:string,
+  actualdate: string
+}
+
    
 
 export default Tutor

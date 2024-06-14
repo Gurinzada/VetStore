@@ -1,4 +1,4 @@
-import express from "express"
+import express, { response } from "express"
 import { PrismaClient } from "@prisma/client"
 import cors from "cors"
 
@@ -138,9 +138,36 @@ app.get("/orders/:id", async(req, res) => {
                 tutorId: req.params.id
             }
         })
-        res.status(200).status(response)
+        res.status(200).json(response)
     } catch (error) {
         res.status(500).json({error: "An error has ocurred during to get the oders"})
+    }
+})
+
+app.get("/orders/byorder/:id", async(req, res) => {
+    try {
+        const response = await prisma.orders.findUnique({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(500).json({ error: "An Error has ocurred"})
+    }
+})
+
+app.delete("/orders/byorder/:id", async(req, res) => {
+    try {
+        const response = await prisma.orders.delete({
+            where:{
+                id: req.params.id
+            }
+        })
+        res.status(200).json(response)
+    } catch (error) {
+        console.log(`Prisma error:`, error)
+        res.status(500).json({error: "An error has ocurred during the payment"})
     }
 })
 

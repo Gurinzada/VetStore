@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { UserInfo } from "../backend/services/Interface"
-import Bone from "../imgs/Logo.jpg"
 import api from "../backend/services/api"
-import { useAuth } from "../Context/AuthProvider"
+import SimpleHeader from "../Components/SimpleHeader"
 
 export default function Account(){
 
@@ -14,7 +13,6 @@ export default function Account(){
     const [cep, setCep] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [passwordConfirm, setPasswordConfirm] = useState<string>("")
-    const {logout} = useAuth()
     const {id} = useParams()
 
     useEffect(() => {
@@ -25,9 +23,6 @@ export default function Account(){
         fetchDatasUser()
     },[id])
 
-    const handleLogout = () => {
-        logout()
-    }
 
     const handlePersonalInfos = async(e:React.FormEvent) => {
         e.preventDefault()
@@ -65,13 +60,7 @@ export default function Account(){
     }
     return(
         <div>
-            <header>
-            <div><img src={Bone} alt="" /></div>
-                <nav>
-                    <Link to={`/store/${id}`} style={{cursor:"pointer"}}><span>Voltar</span></Link>
-                    <span onClick={handleLogout} style={{cursor:"pointer"}}>Logout</span>
-                </nav>
-            </header>
+            <SimpleHeader id={`/store/${id}`}/>
             <main>
                 <section>
                 <form action="" onSubmit={handlePersonalInfos}>

@@ -10,6 +10,7 @@ import takingAShower from "../imgs/TakingAShower.jpg";
 import allServices from "../imgs/AllServices.jpg";
 import playing from "../imgs/PlayWithDog.jpg";
 import allNight from "../imgs/DogEating.jpg";
+import cart from "../imgs/shopping-cart-svgrepo-com.svg"
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../Context/AuthProvider";
@@ -166,9 +167,10 @@ export default function Store() {
         </div>
         <div>
           <span>Gastos: R$ {actualValue === 0 ? "00": actualValue}.00</span>
+          <Link to={`/store/myspending/${id}`}><img src={cart} alt="" /></Link>
         </div>
         <nav>
-          <span style={{cursor:"pointer"}}>Account</span>
+          <Link to={`/store/account/${id}`}><span style={{cursor:"pointer"}}>Account</span></Link>
           <span style={{cursor:"pointer"}} onClick={handleLogout}>Logout</span>
         </nav>
       </header>
