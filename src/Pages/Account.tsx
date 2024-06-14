@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { UserInfo } from "../backend/services/Interface"
 import api from "../backend/services/api"
 import SimpleHeader from "../Components/SimpleHeader"

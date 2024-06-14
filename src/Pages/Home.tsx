@@ -1,75 +1,129 @@
-import { Link } from "react-router-dom"
-import Bone from "../imgs/Logo.jpg"
-import Brothers from "../imgs/Brothers.jpg"
-import DogGoingToWalk from "../imgs/DogGoingToWalk.jpg"
-import HotelForDog from "../imgs/HotelForDogs.jpg"
+import { Link } from "react-router-dom";
+import Bone from "../imgs/Logo.svg";
+import Brothers from "../imgs/Brothers.jpg";
+import DogGoingToWalk from "../imgs/DogGoingToWalk.jpg";
+import HotelForDog from "../imgs/HotelForDogs.jpg";
+import styles from "../styles/Home.module.scss";
 
-
-export default function Home(){
-    return(
+export default function Home() {
+  return (
+    <div className={styles.Wrapper}>
+      <header className={styles.HeaderHome}>
         <div>
-            <header>
-                <div><img src={Bone} alt="" /></div>
-                <nav>
-                    <Link to={"/register"}>Sign Up</Link>
-                    <Link to={"/login"}>Login</Link>
-                    <a href="#services">Our Services</a>
-                    <a href="#about">About us</a>
-                </nav>
-            </header>
-            <main>
-                <section>
-                    <div>
-                        <h1>PetStore</h1>
-                        <div>
-                            <p>Uma loja diferente de todas as outras!</p>
-                            <p>Aqui na PetStore seu Pet realmente se diverte com nossos cuidadores e veterinários.</p>
-                            <p>Temos uma equipe qualificada e preparada para o cuidado e entretenimento de seu Pet.</p>
-                            <p>Venha nós conhecer, estamos abertos 24horas!</p>
-                        </div>
-                    </div>
-                    <div>
-                        <img src={Brothers} alt="" />
-                    </div>
-                </section>
-                <section id="services">
-                    <div>
-                        <h1>Nossos Serviços</h1>
-                        <div>
-                            <p>Aqui na PetStore temos todos os tipos de serviços para a felicidade do Pet e tutor.</p>
-                            <p>Contamos com uma equipe de Banho e Tosa profissionais,</p>
-                            <p>Veterinarios capacitados com anos de experiência na área e super carinhosos,</p>
-                            <p>Uma infraestrutura com hospital para os Veterinarios conseguirem atuar.</p>
-                            <p>Além disso contamos com o Hotel PetStore e Cuidadores para o seu animalzinho passar um final de semana relaxando e curtindo.</p>
-                            <p>Venha agora mesmo consultar os nossso preços.</p>
-                        </div>
-                    </div>
-                    <div>
-                        <img src={DogGoingToWalk} alt="" />
-                    </div>
-                </section>
-                <section>
-                    <div id="about">
-                        <h1>Sobre a PetStore</h1>
-                        <div>
-                            <p>Começamos como um pequeno PetShop em 1990,</p>
-                            <p>E desde então temos avançado nesse mercado de Pets,</p>
-                            <p>Graças aos nossos ótimos trabalhos, conseguimos crescer dentro da área,</p>
-                            <p>Temos orgulho da confiança que nossos clientes depositam em nós,</p>
-                            <p>Nosso lema é sempre proporcinar o melhor trabalho, com amor, ética e humanidade,</p>
-                            <p>Sempre buscamos evoluir nosso trabalho, e temos planejamento de expandir nossa marca!</p>
-                        </div>
-                    </div>
-                    <div>
-                        <img src={HotelForDog} alt="" />
-                    </div>
-                </section>
-            </main>
-            <footer>
-                <div>
-                    <span>PetStore 2024 &copy;</span>
-                </div>
-            </footer>
+          <img src={Bone} alt="" className={styles.Bone} />
         </div>
-    )
+        <nav className={styles.NavBar}>
+          <Link to={"/register"}>Sign Up</Link>
+          <Link to={"/login"}>Login</Link>
+          <a href="#services">Our Services</a>
+          <a href="#about">About us</a>
+        </nav>
+      </header>
+      <main className={styles.WrapperMainHome}>
+        <section className={styles.SectionHome}>
+          <div className={styles.ContentForPresentation}>
+            <h1 className={styles.TitleHome}>PetStore</h1>
+            <div className={styles.WrapperParagraphHome}>
+              <p>Bem-vindo à PetStore, uma loja única e incomparável!</p>
+              <p>
+                Aqui na PetStore, seu pet realmente se diverte e recebe o melhor
+                cuidado com nossa equipe de cuidadores e veterinários dedicados.
+              </p>
+              <p>
+                Nosso time é altamente qualificado e preparado para oferecer
+                cuidados excepcionais e entretenimento de qualidade para o seu
+                pet, garantindo uma experiência alegre e segura.
+              </p>
+              <p>
+                Venha nos conhecer! Estamos abertos 24 horas por dia, prontos
+                para receber você e seu pet a qualquer momento.
+              </p>
+            </div>
+          </div>
+          <div>
+            <img src={Brothers} alt="" className={styles.ImgSection} />
+          </div>
+        </section>
+        <section id="services" className={styles.SectionHome}>
+          <div className={styles.ContentForPresentation}>
+            <h1 className={styles.TitleHome}>Nossos Serviços</h1>
+            <div className={styles.WrapperParagraphHome}>
+              <p>
+                Aqui na PetStore, oferecemos uma ampla variedade de serviços
+                para garantir a felicidade de pets e tutores.
+              </p>
+              <p>
+                Contamos com uma equipe profissional de Banho e Tosa, pronta
+                para deixar seu pet ainda mais bonito e saudável.
+              </p>
+              <p>
+                Nossos veterinários são altamente capacitados, com anos de
+                experiência e muito carinho para oferecer aos seus animais.
+              </p>
+              <p>
+                Disponibilizamos uma infraestrutura completa, incluindo um
+                hospital veterinário, para atender todas as necessidades de
+                saúde do seu pet.
+              </p>
+              <p>
+                Além disso, oferecemos o Hotel PetStore, onde seu animalzinho
+                pode relaxar e se divertir com nossos cuidadores durante o fim
+                de semana.
+              </p>
+              <p>
+                Venha agora mesmo consultar nossos preços e conhecer todos os
+                nossos serviços!
+              </p>
+            </div>
+          </div>
+          <div>
+            <img src={DogGoingToWalk} alt="" className={styles.ImgSection} />
+          </div>
+        </section>
+        <section id="about" className={styles.SectionHome}>
+          <div className={styles.ContentForPresentation}>
+            <h1 className={styles.TitleHome}>Sobre a PetStore</h1>
+            <div className={styles.WrapperParagraphHome}>
+              <p>
+                Nossa jornada começou humildemente em 1990, como um pequeno
+                PetShop. Desde então, temos nos destacado e crescido no mercado
+                de Pets, graças ao nosso compromisso contínuo com a excelência.
+              </p>
+              <p>
+                Ao longo dos anos, nosso trabalho árduo e dedicação nos
+                permitiram conquistar a confiança e o carinho de nossos
+                clientes. Temos imenso orgulho do vínculo que construímos com
+                cada um deles.
+              </p>
+              <p>
+                Nossa missão sempre foi e sempre será proporcionar o melhor
+                cuidado aos nossos amigos de quatro patas, com amor, ética e
+                humanidade. Esse compromisso reflete-se em cada serviço que
+                oferecemos, garantindo sempre o bem-estar dos pets.
+              </p>
+              <p>
+                Estamos em constante evolução, buscando sempre melhorar nossos
+                serviços e a experiência de nossos clientes. Com planos
+                ambiciosos para o futuro, nossa visão é expandir nossa marca e
+                levar nosso carinho e cuidado a mais pets e famílias.
+              </p>
+              <p>
+                Obrigado por fazer parte da nossa história. Juntos,
+                continuaremos a crescer e a fazer a diferença na vida dos nossos
+                amados pets.
+              </p>
+            </div>
+          </div>
+          <div>
+            <img src={HotelForDog} alt="" className={styles.ImgSection} />
+          </div>
+        </section>
+      </main>
+      <footer className={styles.FooterHome}>
+        <div>
+          <span>PetStore 2024 &copy;</span>
+        </div>
+      </footer>
+    </div>
+  );
 }

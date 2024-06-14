@@ -1,0 +1,158 @@
+.Wrapper{
+    background-color: #E7D08E;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 0rem 3rem 0rem 3rem ;
+}
+
+.HeaderHome{
+    align-items: center;
+    background-color: #F8F8FF;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap-reverse;
+    gap: 2rem;
+    width: 100%;
+}
+
+.Bone{
+    width: 175px;
+}
+
+.ImgSection{
+    border-radius: 8px;
+    border: 2px solid #171717;
+    width: 415px;
+}
+
+.WrapperMainHome{
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    gap: 3rem;
+    width: 100%;
+}
+
+.NavBar{
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  a{
+    color: #111111;
+    font-size: 1.12rem;
+    text-decoration: none;
+  }
+  
+  a:hover{
+    text-decoration: underline;
+  }
+
+.SectionHome{
+    align-items: center;
+    background: linear-gradient(180deg, rgba(85,173,155,1) 30%, rgba(241,248,232,1) 75%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+    padding: 1.5rem;
+}
+
+.WrapperParagraphHome{
+    color:  #333333;
+    letter-spacing: .5px;
+    width: 570px;
+}
+
+.ContentForPresentation{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.TitleHome{
+    color: #F1F8E8;
+    font-weight: 200;
+    font-size: 2.2rem;
+}
+
+.FooterHome{
+    align-items: center;
+    background-color: #F8F8FF;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2.4rem;
+}
+
+@media (max-width: 768px) {
+    .Bone{
+        width: 68px;
+    }
+
+    .HeaderHome{
+        gap: 0.5rem;
+    }
+
+    .Wrapper{
+        margin: 0rem 1.5rem 0rem 1.5rem;
+    }
+
+    .ImgSection{
+        width: 280px;
+    }
+    
+    .WrapperMainHome{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+    }
+
+    .SectionHome{
+        gap: 2rem;
+        padding: 0.5rem;
+    }
+
+    .WrapperParagraphHome{
+        font-size: 0.60rem;
+        width: 380px;
+    }
+
+    .TitleHome{
+        font-size: 1.35rem;
+    }
+
+    a{
+        font-size: 0.70rem;
+    }
+
+    .FooterHome{
+        font-size: 0.70rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 455px) {
+    .Bone{
+        width: 44px;
+    }
+
+    .ImgSection{
+        width: 150px;
+    }
+
+    .WrapperParagraphHome{
+        width: 200px;
+    }
+
+    a{
+        font-size: 0.6rem;
+    }
+
+}
