@@ -10,10 +10,12 @@ import takingAShower from "../imgs/TakingAShower.jpg";
 import allServices from "../imgs/AllServices.jpg";
 import playing from "../imgs/PlayWithDog.jpg";
 import allNight from "../imgs/DogEating.jpg";
+import dogVaccine from "../imgs/DogVaccine.jpg"
 import cart from "../imgs/shopping-cart-svgrepo-com.svg"
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../Context/AuthProvider";
+import styles from "../styles/Store.module.scss"
 
 export default function Store() {
   const [userInfos, setUserInfos] = useState<UserInfo | null>(null);
@@ -56,6 +58,8 @@ export default function Store() {
         return allNight;
       case "Adestramento":
         return playing;
+      case "Vacinação":
+        return dogVaccine;
       default:
         break;
     }
@@ -130,32 +134,32 @@ export default function Store() {
   }
 
   return (
-    <div>
-      <header>
+    <div className={styles.Wrapper}>
+      <header className={styles.HeaderStore}>
         <div>
           <div>
-            <img src={Bone} alt="" />
+            <img src={Bone} alt="" className={styles.Bone}/>
           </div>
           <div>
-            <h1>Pet Store</h1>
+            <h1 className={styles.TitleStore}>Pet Store</h1>
           </div>
         </div>
-        <div>
-          <input type="search" placeholder="Procure aqui um serviço" />
-          <img src={SearchIcon} alt="" />
+        <div className={styles.WrapperSearch}>
+          <input type="search" placeholder="Procure aqui um serviço" className={styles.InputSearch}/>
+          <img src={SearchIcon} alt="" className={styles.SearchIcon}/>
         </div>
-        <div>
+        <div className={styles.WrapperLocalization}>
           <div>
             <span>Olá, {userInfos?.name}</span>
           </div>
           <div>
             {userInfos?.cep === null ? (
               <div>
-                <img src={Location} alt="" />{" "}
+                <img src={Location} alt="" className={styles.Ilustration}/>{" "}
                 <Link to={`/store/account/${id}`}><span>Adicione sua localização</span></Link>
               </div>
             ) : (
-              <div>
+              <div className={styles.CardLocalization}>
                 <h5>{userInfos?.cep}</h5>
                 <p>
                   {userInfos?.street}, N°{userInfos?.housenumber}
@@ -165,45 +169,48 @@ export default function Store() {
             )}
           </div>
         </div>
-        <div>
+        <div className={styles.WrapperSpend}>
+          <Link to={`/store/myspending/${id}`}><img src={cart} alt="" className={styles.Ilustration}/></Link>
           <span>Gastos: R$ {actualValue === 0 ? "00": actualValue}.00</span>
-          <Link to={`/store/myspending/${id}`}><img src={cart} alt="" /></Link>
         </div>
-        <nav>
+        <nav className={styles.NavStore}>
           <Link to={`/store/account/${id}`}><span style={{cursor:"pointer"}}>Account</span></Link>
-          <span style={{cursor:"pointer"}} onClick={handleLogout}>Logout</span>
+          <span style={{cursor:"pointer"}} onClick={handleLogout} className={styles.SpanLogout}>Logout</span>
         </nav>
       </header>
-      <main>
+      <main className={styles.WrapperServices}>
         <ToastContainer />
         <div>
-          <h1>Escolha seu serviço abaixo</h1>
+          <h1 className={styles.TitleServices}>Escolha seu serviço abaixo</h1>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.FormWrapper}>
           {categories ? (
             categories.map((cat) => (
-              <div key={cat.id} id={cat.id}>
+              <div key={cat.id} id={cat.id} className={styles.WrapperCardServices}>
                 <div>
-                  <h3>{cat.name}</h3>
+                  <h3 className={styles.TitleServiceCard}>{cat.name}</h3>
                 </div>
                 <div>
-                  <img src={handleImages(cat.name)} alt="" />
+                  <img src={handleImages(cat.name)} alt="" className={styles.ImgServices}/>
                 </div>
                 <div>
-                  <span>R${cat.price === null ? "00" :cat.price}.00</span>
+                  <span className={styles.TitlePrice}>R${cat.price === null ? "00" :cat.price}.00</span>
                 </div>
                 <input
                   type="checkbox"
                   onChange={(e) =>
                     handleCheckBox(cat.id, e.target.checked)
                   }
+                  className={styles.InputCheckBox}
                 />
               </div>
             ))
           ) : (
             <h1>Erro ao carregar os serviços!</h1>
           )}
-          <button>Confirmar compras!</button>
+          <div className={styles.BntWrapper}>
+            <button type="submit" className={styles.BntConfirm}>Confirmar compras!</button>
+        </div>
         </form>
       </main>
     </div>

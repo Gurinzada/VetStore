@@ -1,0 +1,258 @@
+@import "./Colors.scss";
+@import "./Container.scss";
+
+.Wrapper{
+    @include Wrapper;
+}
+
+.HeaderStore{
+    align-items: center;
+    background-color: $BackgroundColorGhostHeader;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: space-evenly;
+    padding: 1rem;
+    width: 100%;
+}
+
+.ImgServices{
+    border-radius: 4px;
+    height: 150px;
+    width: 150px;
+}
+
+.Bone{
+    width: 180px;
+}
+
+.TitleStore{
+    color: $Pitch;
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.WrapperSearch{
+    position: relative;
+}
+
+.InputSearch::-webkit-search-cancel-button{
+    display: none;
+}
+
+.SearchIcon{
+    cursor: pointer;
+    position: absolute;
+    right: 3%;
+    top: 25%;
+}
+
+.WrapperLocalization{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.WrapperSpend{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    justify-content: center;
+}
+
+.NavStore{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.SpanLogout{
+    color: $Pitch;
+    font-size: 1.12rem;
+}
+
+.SpanLogout:hover{
+    text-decoration: underline;
+}
+
+.WrapperServices{
+    align-items: center;
+    @include AllBordersForms;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin: 1rem 0 1rem 0;
+    padding: 1rem;
+}
+
+.TitleServices{
+    color: $Title;
+    font-size: 2.2rem;
+    font-weight: 200;
+}
+
+.TitlePrice, .TitleServiceCard{
+    color: $Title;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+
+.FormWrapper{
+   display: grid;
+   grid-template-rows: 0.05fr 0.05fr 0.05fr;
+   grid-template-columns: 0.05fr 0.05fr 0.05fr;
+   height: 100vh;
+   gap: 2rem;
+}
+
+.WrapperCardServices{
+    align-items: center;
+    background-color: $BackgroundColor;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: center;
+    padding: 0.85rem;
+    width: 240px;
+}
+
+.BntWrapper{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.BntConfirm{
+    height: 1.8rem;
+    width: 15rem;
+}
+
+.CardLocalization{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.InputCheckBox{
+    border-radius: 0;
+    height: 1rem;
+    padding: 0;
+    width: 4rem;
+}
+
+@media (max-width:925px) {
+    .Bone{
+        width: 68px;
+    }
+    .TitleStore{
+        font-size: 1.2rem;
+    }
+    .InputSearch{
+        font-size: 0.65rem;
+        width: 12rem;
+    }
+    .TitlePrice, .TitleServiceCard{
+        font-size: 0.9rem;
+    }
+    .TitleServices{
+        font-size: 1.2rem;
+    }
+    .BntConfirm{
+        font-size: 0.65rem;
+        width: 8rem;
+    }
+    .WrapperServices{
+        margin: 0.5rem 0 0.5rem 0;
+    }
+    .WrapperCardServices{
+        width: 180px;
+    }
+}
+
+@media (max-width:768px) {
+    .Bone{
+        width: 32px;
+    }
+    .TitleStore{
+        font-size: 0.85rem;
+    }
+    .TitlePrice, .TitleServiceCard{
+        font-size: 0.65rem;
+    }
+    .TitleServices{
+        font-size: 0.8rem;
+    }
+    .BntConfirm{
+        font-size: 0.45rem;
+        width: 4rem;
+    }
+    .WrapperServices{
+        margin: 0.15rem 0 0.15rem 0;
+    }
+    .WrapperCardServices{
+        width: 120px;
+    }
+    .Ilustration{
+        height: 18px;
+        width: 18px;
+    }
+    .SpanLogout, .WrapperLocalization, .WrapperSpend{
+        font-size: 0.7rem;
+    }
+    .ImgServices{
+        height: 80px;
+        width: 80px;
+    }
+    .SearchIcon{
+        height: 12px;
+        width: 12px;
+    }
+    .HeaderStore{
+        padding: 0.25rem;
+    }
+}
+
+@media (max-width:555px){
+    .FormWrapper{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .BntConfirm{
+        height: 1rem;
+        font-size: 0.35rem;
+    }
+    .ImgServices{
+        height: 50px;
+        width: 50px;
+    }
+    .TitlePrice, .TitleServiceCard{
+        font-size: 0.35rem;
+        font-weight: 400;
+    }
+    .WrapperCardServices{
+        height: 90px;
+        padding: 0.25rem;
+        width: 90px;
+    }
+    .InputCheckBox{
+        height: 0.45rem;
+        width: 0.45rem;
+    }
+}
+

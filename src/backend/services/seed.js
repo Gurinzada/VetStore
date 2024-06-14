@@ -17,6 +17,7 @@ const seed = async () => {
           { name: "Passear", price: 50.0 },
           { name: "Diária", price: 350.0 },
           { name: "Adestramento", price: 120.0 },
+          {name: "Vacinação", price: 70.0},
         ]
       });
       console.log("Categories seeded successfully.");

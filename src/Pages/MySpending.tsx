@@ -58,6 +58,7 @@ export default function MySpending(){
                                 <div><p>ID do Pedido: {order.id}</p></div>
                                 <div><p>Serviço: {category?.name}</p></div>
                                 <div><p>Preço: {category ? category.price + ".00" : "Category not found"}</p></div>
+                                <div><p>Data: {order.actualdate}</p></div>
                                 <div><button onClick={() => handlePayment(order.id, Number(category?.price))}>Pagar</button></div>
                             </div>
                         );
