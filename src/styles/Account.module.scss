@@ -1,0 +1,68 @@
+@import "./Colors.scss";
+@import "./Container.scss";
+
+.WrapperAccount{
+    @include Wrapper
+}
+
+.WrapperMainAccount{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5.55rem;
+    justify-content: center;
+    margin: 1rem 0 1rem 0;
+}
+
+.SectionWrapperAcc{
+    align-items: center;
+    background: linear-gradient(180deg, $CardBackground 30%, rgba(241,248,232,1) 75%);
+    border: 2px solid $BackgroundColorGhostHeader;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 488px;
+}
+
+.SectionWrapperDog{
+    align-items: center;
+    border: 2px solid $BackgroundColorGhostHeader;
+    border-radius: 2rem;
+    background: linear-gradient(180deg, $CardBackground 30%, rgba(241,248,232,1) 75%);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+    width: 488px;
+}
+
+.TitleAcc{
+    color: $Title;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.FormsAccount{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.ContentInForm{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+label{
+    padding-left: 0.25rem;
+}

@@ -3,6 +3,7 @@ import SimpleHeader from "../Components/SimpleHeader";
 import { useEffect, useState } from "react";
 import { Categories, Oders, UserInfo } from "../backend/services/Interface";
 import api from "../backend/services/api";
+import styles from "../styles/MySpending.module.scss"
 
 export default function MySpending(){
     const [userInfos, setUserInfos] = useState<UserInfo>()
@@ -47,18 +48,18 @@ export default function MySpending(){
     }
 
     return(
-        <div>
+        <div className={styles.WrapperMySpending}>
             <SimpleHeader id={`/store/${id}`}/>
-            <main>
-                <section>
+            <main className={styles.WrapperForOrders}>
+                <section className={styles.SectionWrapper}>
                 {orders && orders.length > 0 ? orders.map((order) => {
                         const category = categories.find(cat => cat.id === order.categoryId);
                         return (
-                            <div key={order.id}>
-                                <div><p>ID do Pedido: {order.id}</p></div>
-                                <div><p>Serviço: {category?.name}</p></div>
-                                <div><p>Preço: {category ? category.price + ".00" : "Category not found"}</p></div>
-                                <div><p>Data: {order.actualdate}</p></div>
+                            <div key={order.id} className={styles.CardOrders}>
+                                <div><p className={styles.ContentParagraph}>ID do Pedido: {order.id}</p></div>
+                                <div><p className={styles.ContentParagraph}>Serviço: {category?.name}</p></div>
+                                <div><p className={styles.ContentParagraph}>Preço: {category ? category.price + ".00" : "Category not found"}</p></div>
+                                <div><p className={styles.ContentParagraph}>Data: {order.actualdate}</p></div>
                                 <div><button onClick={() => handlePayment(order.id, Number(category?.price))}>Pagar</button></div>
                             </div>
                         );

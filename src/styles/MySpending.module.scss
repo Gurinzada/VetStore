@@ -1,0 +1,69 @@
+@import "./Colors.scss";
+@import "./Container.scss";
+
+.WrapperMySpending{
+    @include Wrapper;
+}
+
+.WrapperForOrders{
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100vh;
+    padding: 0.5rem;
+    margin: 2.5rem 0 2.5rem 0;
+    width: 100%;
+}
+
+.SectionWrapper{
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    height: 100vh;
+    justify-content: flex-start;
+}
+
+.CardOrders{
+    align-items: center;
+    border: 2px solid $BackgroundColorGhostHeader;
+    border-radius: 8px;
+    background: linear-gradient(180deg, $CardBackground 30%, rgba(241,248,232,1) 75%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    justify-content: center;
+}
+
+.ContentParagraph{
+    color: $Pitch;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .WrapperMySpending{
+        margin: 0rem 1rem 0rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .WrapperForOrders{
+        height: 120vh;
+    }
+    .ContentParagraph{
+        font-size: 0.65rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 375px) {
+    .ContentParagraph{
+        font-size: 0.5rem;
+        text-align: center;
+    }
+}
