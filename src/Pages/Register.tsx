@@ -5,6 +5,8 @@ import Tutor from "../backend/services/Interface";
 import { useAuth } from "../Context/AuthProvider";
 import HeaderDefault from "../Components/HeaderDefault";
 import styles from "../styles/Register.module.scss"
+import useError from "../backend/services/useError";
+import useRegex from "../backend/services/useRegex";
 
 export default function Register() {
   const [userName, setUserName] = useState<string>(``);
@@ -17,14 +19,21 @@ export default function Register() {
   const [password, setPassword] = useState<string>(``);
   const navigate = useNavigate()
   const {login} = useAuth()
+  const {showError, handleError, handleNegativeError} = useError()
+  const {handlePassword} = useRegex()
 
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault()
     if(password !== passwordConfirm){
-        console.log(`Tratar erro depois`)
+        handleError()
+        setTimeout(() => {
+          handleNegativeError()
+        },2000)
         return
     }
-    try {
+    const isRight = handlePassword(password)
+    if(isRight){
+      try {
         const response = await api.post("/users", {
             email,
             password,
@@ -54,6 +63,13 @@ export default function Register() {
         
     } catch (error) {
         console.error(`Something goes wrong `, error)
+    }
+    } else{
+      handleError()
+        setTimeout(() => {
+          handleNegativeError()
+        },2000)
+        return
     }
   }
 
@@ -131,6 +147,9 @@ export default function Register() {
         </div>
         <div>
             <button>Cadastrar</button>
+        </div>
+        <div>
+          {showError === true ? <span style={{color:"red"}}>Algo não esta no formato pedido!</span> : null}
         </div>
       </form>
     </div>

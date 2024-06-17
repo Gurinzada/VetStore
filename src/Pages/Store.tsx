@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../backend/services/api";
 import { UserInfo, Categories } from "../backend/services/Interface";
 import Bone from "../imgs/Logo.jpg";
@@ -26,6 +26,7 @@ export default function Store() {
   const [actualValue, setActualValue] = useState<number>(0);
   const { id } = useParams();
   const { logout } = useAuth()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -133,6 +134,9 @@ export default function Store() {
     logout()
   }
 
+  const handleDetails = (idProduct:string) => {
+    navigate(`/store/details/${id}/${idProduct}`)
+  }
   return (
     <div className={styles.Wrapper}>
       <header className={styles.HeaderStore}>
@@ -191,7 +195,7 @@ export default function Store() {
                   <h3 className={styles.TitleServiceCard}>{cat.name}</h3>
                 </div>
                 <div>
-                  <img src={handleImages(cat.name)} alt="" className={styles.ImgServices}/>
+                  <img src={handleImages(cat.name)} alt="" className={styles.ImgServices} style={{cursor:"pointer"}} onClick={() => handleDetails(cat.id)}/>
                 </div>
                 <div>
                   <span className={styles.TitlePrice}>R${cat.price === null ? "00" :cat.price}.00</span>

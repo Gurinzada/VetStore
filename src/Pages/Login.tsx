@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import useCheckUsers from "../backend/services/useCheckUsers"
 import { useAuth } from "../Context/AuthProvider"
 import styles from "../styles/Login.module.scss"
+import useError from "../backend/services/useError"
 
 export default function Login(){
     const [email, setEmail] = useState<string>("")
@@ -12,6 +13,7 @@ export default function Login(){
     const navigate = useNavigate()
     const {check} = useCheckUsers()
     const {login} = useAuth()
+    const {showError, handleError, handleNegativeError} = useError()
 
     const handleSubmit = async(e:React.FormEvent) => {
         e.preventDefault()
@@ -34,7 +36,10 @@ export default function Login(){
             login(theUser)
             navigate(`/store/${response.id}`)
         }else{
-            console.warn("Erro")
+            handleError()
+            setTimeout(() => {
+                handleNegativeError()
+            },2000)
         }
     }
 
@@ -54,6 +59,7 @@ export default function Login(){
                 <div>
                     <button className={styles.BntLogin}>Login🐶</button>
                 </div>
+                {showError === true ? <span style={{color:"red"}}>Email ou senha incorretos</span> : null}
             </form>
         </div>
     )

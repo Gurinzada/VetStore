@@ -1,0 +1,39 @@
+@import "./Colors.scss";
+
+.Wrapper{
+    align-items: center;
+    
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.WrapperMainDetails{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.TextDescription{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 4.5rem;
+    justify-content: center;
+}
+
+.ParagraphText{
+    color: $pColor;
+    font-size: .95rem;
+    font-weight: 500;
+    text-align: center;
+    word-spacing: 1.2px;
+}
+
+.ImgDetails{
+    border-radius: 22px;
+    border: 2px solid $borderColor;
+    width: 825px;
+}

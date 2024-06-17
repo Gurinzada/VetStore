@@ -111,6 +111,21 @@ app.get("/categories", async (req, res) => {
     res.status(200).json(response)
 })
 
+app.get("/categories/:id", async(req, res) => {
+    try {
+        const response = await prisma.category.findUnique({
+            where:{
+                id: req.params.id
+            }
+        })
+        res.status(200).json(response)
+    } catch (error) {
+        console.log(res.status(500).json({error: "Error trying to get categories by ID"}))
+        console.log(error)
+    }
+    
+})
+
 app.get("/orders", async(req, res) => {
     const response = await prisma.orders.findMany()
     res.status(200).json(response)
