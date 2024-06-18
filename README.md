@@ -19,6 +19,7 @@ Se precisar visualizar e interagir com os dados de uma forma mais amigável, exe
 
 * Execute npx prisma studio para abrir o Prisma Studio e explorar as atualizações de dados em uma interface amigável.
 
+## Endpoints
 Alguns Endpoints úteis   | Retornos
 --------- | ------
 GET: `/users` | Retorna todos os usuários
