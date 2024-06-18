@@ -7,6 +7,7 @@ import HeaderDefault from "../Components/HeaderDefault";
 import styles from "../styles/Register.module.scss"
 import useError from "../backend/services/useError";
 import useRegex from "../backend/services/useRegex";
+// import useBcrypt from "../backend/services/useBcrypt";
 
 export default function Register() {
   const [userName, setUserName] = useState<string>(``);
@@ -21,6 +22,7 @@ export default function Register() {
   const {login} = useAuth()
   const {showError, handleError, handleNegativeError} = useError()
   const {handlePassword} = useRegex()
+  // const {handleSetPassword, hashPassword, hashedPassword} = useBcrypt()
 
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault()
@@ -31,6 +33,9 @@ export default function Register() {
         },2000)
         return
     }
+      // handleSetPassword(password)
+      // hashPassword()
+
     const isRight = handlePassword(password)
     if(isRight){
       try {
