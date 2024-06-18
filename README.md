@@ -1,15 +1,30 @@
 # PetStore, uma aplicação para Pets
 
-Este é um pequeno projeto para exercitar minhas habilidades, usando React.js, TypeScript, Axios, Express, Prisma, MongoDB e Sass.
-* React em conjunto com seus Hooks é usado para a estruturação e roteamento da página.
-* TypeScript e Express são usados para criar a lógica, interfaces e o funcionamento das Requisições HTTP e Respostas.
-* Axios é utilizado para lidar com a comunicação entre o Back e o Front.
+Este é um pequeno projeto para exercitar minhas habilidades, utilizando React.js, TypeScript, Axios, Express, Prisma, MongoDB e Sass.
+* React, em conjunto com seus Hooks, é utilizado para estruturar e rotear a página.
+* TypeScript e Express são usados para criar a lógica, interfaces e o funcionamento das requisições HTTP e respostas.
+* Axios é utilizado para lidar com a comunicação entre o back-end e o front-end.
 * Prisma facilita nossa interação com os dados enviados para o MongoDB.
-* Sass é utilizado para dar estilos e cores as páginas.
+* Sass é utilizado para aplicar estilos e cores às páginas.
 
 ## Instruções
 
-Para utilizar, é necessário fazer o download ou clonar este repositório, assim que fizer uma das opções anteriores, abra o projeto e configure o `.env` e o `prisma/schema.prisma` (este último se necessário) de acordo com seu Banco de Dados para realizar a conexão, com todos os dados corretos, rode a aplicação executando os seguintes comandos no terminal `npm run dev`, `npm run server` e se necessitar ver as atualizações em uma interface amigável, execute `npx prisma studio`.
+Para utilizar este projeto, você precisa baixar ou clonar este repositório. Após realizar uma dessas opções, abra o projeto e configure os arquivos `.env` e, se necessário, `prisma/schema.prisma` de acordo com o seu banco de dados para estabelecer a conexão correta. Certifique-se de inserir todos os dados corretamente.
+
+Para rodar a aplicação, execute os seguintes passos no terminal:
+
+1. Execute npm run dev para iniciar o ambiente de desenvolvimento.
+2. Execute npm run server para iniciar o servidor Express.
+Se precisar visualizar e interagir com os dados de uma forma mais amigável, execute o seguinte comando para abrir o Prisma Studio:
+
+* Execute npx prisma studio para abrir o Prisma Studio e explorar as atualizações de dados em uma interface amigável.
+
+Alguns Endpoints úteis   | Retornos
+--------- | ------
+GET: `/users` | Retorna todos os usuários
+GET: `/users/:id` | Retorna um único usuário pelo ID
+GET: `/orders/:id` | Retorna o(s) pedido(s) pelo ID do usuário
+GET: `/orders` | Retorna todos os pedidos
 
 ## Imagens
 
